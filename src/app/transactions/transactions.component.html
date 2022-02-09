@@ -1,0 +1,57 @@
+<h2>TRANSACCIONES</h2>
+
+<div class="d-flex justify-content-end flex-wrap">
+
+    <div class="col-4 d-flex align-items-center">
+        <label class="" for="">Desde</label>
+        <input type="datetime-local" class="form-control" (change)="initial.value" #initial>
+    </div>
+
+    <div class="col-4 d-flex align-items-center ms-2">
+        <label class="" for="">Hasta</label>
+        <input type="datetime-local" class="form-control" (change)="end.value" #end>
+    </div>
+
+    <div class="col-auto ms-2 d-flex align-items-center">
+        <button type="button" class="btn btn-outline-primary btn-sm py-auto h-100" (click)="buscarTrasacciones(initial.value, end.value)"> 
+            <i class="bi-search"></i> Buscar 
+        </button>
+    </div>
+    
+</div>
+
+<hr>
+
+<div class="col-12 mb-3 d-flex justify-content-end">
+  <button type="button" class="btn btn-success btn-sm ms-auto" (click)="exportar()">Exportar</button>
+</div>
+
+<div class="table-responsive">
+  
+  <!-- TABLE item fecha transaccion referencia hora valor-completo valor-abono -->
+  <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover table table-hover table-sm align-middle">
+      <thead class="table-dark">
+        <tr>
+          <th>item</th>
+          <th>Referencia</th>
+          <th>Valor Completo</th>
+          <th>Fecha</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let transaction of transactionsList">
+          <td> {{ transaction.transaction }} </td>
+          <td> {{ transaction.referencia }} </td>
+          <td> {{ transaction.valor | currency}} </td>
+          <td> {{ transaction.fecha | date: "medium" }} </td>
+        </tr>
+        
+      </tbody>
+    </table>
+
+  <!-- TABLE -->
+
+</div>
+
+

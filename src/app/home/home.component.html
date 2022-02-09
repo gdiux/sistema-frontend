@@ -1,0 +1,45 @@
+
+  
+  <h2>Dashboard</h2>
+  
+      <div class="col-12">
+        <div class="mb-3">
+          <label for="code" class="form-label">Escriba el codigo aqui:</label>
+          <input type="text" [disabled]="disabled == true" class="form-control" id="code" placeholder="codigo de barras" autofocus="true" (keyup.enter)="createTransaction(newcode.value)" #newcode>
+        </div>
+      </div>
+      
+      <hr>
+
+      <div class="col-12 mb-3 d-flex justify-content-end">
+        <button type="button" class="btn btn-success btn-sm ms-auto" (click)="exportar()">Exportar</button>
+      </div>
+
+      <div class="table-responsive">
+        
+        <!-- TABLE item fecha transaccion referencia hora valor-completo valor-abono -->
+        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover table table-hover table-sm align-middle">
+            <thead class="table-dark">
+              <tr>
+                <th>item</th>
+                <th>Referencia</th>
+                <th>Valor Completo</th>
+                <th>Fecha</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr *ngFor="let transaction of transactionsList">
+                <td> {{ transaction.transaction }} </td>
+                <td> {{ transaction.referencia }} </td>
+                <td> {{ transaction.valor | currency}} </td>
+                <td> {{ transaction.fecha | date: "medium" }} </td>
+              </tr>
+              
+            </tbody>
+          </table>
+
+        <!-- TABLE -->
+
+      </div>
+
