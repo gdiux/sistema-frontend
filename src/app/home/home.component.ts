@@ -2,7 +2,7 @@ import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/co
 import { Subject } from 'rxjs';
 import Swal from 'sweetalert2';
 import { LanguageApp  } from '../models/datatable.span';
-import * as XLSX from 'xlsx';
+import * as XLSX from 'xlsx';
 
 // MODELS
 import { Transaction } from '../models/transaction.model';
